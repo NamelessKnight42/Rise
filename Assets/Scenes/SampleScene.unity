@@ -408,12 +408,12 @@ SpriteRenderer:
   m_SortingLayerID: -1074112007
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0fcf17497d54a2544b173d2ce4d39a13, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 19803fc4fe80f094f95d0f7770dd43a6, type: 3}
   m_Color: {r: 0.03472221, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.96, y: 0.96}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -452,7 +452,7 @@ PolygonCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
-    newSize: {x: 0.96, y: 0.96}
+    newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -1548,8 +1548,8 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
-  m_LightVolumeOpacity: 0
+  m_Intensity: 0.5
+  m_LightVolumeOpacity: 0.7
   m_ApplyToSortingLayers: f959fabf
   m_LightCookieSprite: {fileID: 21300000, guid: d5f870492d2636e4e88b6a290ce0de08, type: 3}
   m_UseNormalMap: 0
@@ -1706,7 +1706,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 0.1688494, g: 1, b: 0.09811318, a: 1}
-  m_Intensity: 15
+  m_Intensity: 10
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: f959fabf
   m_LightCookieSprite: {fileID: 21300000, guid: 8a7445fbc98dff943b0d1e26c7166b3e, type: 3}
