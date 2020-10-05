@@ -52,8 +52,8 @@
     <UnityVersion>2020.1.6f1c1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Bullet.cs" />
-    <Compile Include="Assets\Scripts\XController.cs" />
+    <Compile Include="Assets\Scripts\Cross_Claw.cs" />
+    <Compile Include="Assets\Scripts\Cross_Controller.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
