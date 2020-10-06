@@ -6,6 +6,8 @@ public class Cross_Claw : MonoBehaviour
 {
     float timer;bool isCatch;
     public GameObject parent;
+    private GameObject something;
+    public float rate;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +26,7 @@ public class Cross_Claw : MonoBehaviour
             timer += Time.deltaTime;
             DrawLine(parent.transform.position);
         }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -31,8 +34,10 @@ public class Cross_Claw : MonoBehaviour
         if (collision.tag != "Player")
         {
             GetComponent<Rigidbody2D>().simulated = false;
+            something = collision.gameObject;
             isCatch =true;
             Pull(true);
+
         }
     }
 
@@ -68,11 +73,15 @@ public class Cross_Claw : MonoBehaviour
         {
             DrawLine(parent.transform.position);
             Vector2 dir = this.gameObject.transform.position - parent.transform.position;
-            if (dir.magnitude < 0.5 || timer > 1f)//距离过近或者超过一定时间都会销毁钩爪
+        
+            if (dir.magnitude < 0.5 || timer > 10f)//距离过近或者超过一定时间都会销毁钩爪
             {
                 Destroy(this.gameObject); 
             }
-            parent.GetComponent<Rigidbody2D>().AddForce(parent.GetComponent<Cross_Controller>().force * dir.normalized);
+            parent.GetComponent<Rigidbody2D>().AddForce(rate * dir.normalized);
+            something.GetComponent<Rigidbody2D>().AddForce(rate * dir.normalized);
+            
+            transform.parent = something.transform;
             timer += Time.deltaTime;
             yield return 0;
         }
