@@ -8,7 +8,7 @@ public class Cube_Controller : MonoBehaviour
     public float cd_time_len;
     public GameObject cube_claw;
     private GameObject claw;
-    private bool is_controll = true;//是否正在被操控
+    private bool is_controll = false;//是否正在被操控
     private bool is_book = false;//是否标定位置
     private bool is_stop = false;//是否正在时停
     private bool is_flying = false;
