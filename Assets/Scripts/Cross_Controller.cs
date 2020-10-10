@@ -7,6 +7,10 @@ public class Cross_Controller : MonoBehaviour
     public GameObject clawPrefab;
     public float bulletVelocity;
     GameObject claw;
+
+    private bool is_controll = false;//是否正在被操控
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,25 +20,28 @@ public class Cross_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonUp(0))
+        if (is_controll)
         {
-            if (claw == null)
+            if (Input.GetMouseButtonUp(0))
             {
-                Vector2 dir = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - this.gameObject.transform.position);
-                Shoot(dir.normalized);
+                if (claw == null)
+                {
+                    Vector2 dir = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - this.gameObject.transform.position);
+                    Shoot(dir.normalized);
+                }
             }
-        }
-        if (Input.GetMouseButtonUp(1))
-        {
-            if (claw != null)
+            if (Input.GetMouseButtonUp(1))
             {
-                Destroy(claw);
-                claw = null;
+                if (claw != null)
+                {
+                    Destroy(claw);
+                    claw = null;
+                }
+
             }
 
+
         }
-
-
     }
 
 
