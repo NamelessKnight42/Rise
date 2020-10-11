@@ -11,7 +11,7 @@ public class Cube_Controller : MonoBehaviour
 
     private GameObject claw;
 
-    public bool is_controll = false;//是否正在被操控
+    public bool isControlled = false;//是否正在被操控
     //private bool is_book = false;//是否标定位置
     private bool isStop = false;//是否正在时停
     private bool isFlying = false;
@@ -30,7 +30,7 @@ public class Cube_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (is_controll) 
+        if (isControlled) 
         {
             if (!isFlying)//不在飞行时的逻辑
             {

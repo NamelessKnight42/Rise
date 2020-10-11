@@ -8,7 +8,7 @@ public class Cross_Controller : MonoBehaviour
     public float bulletVelocity;
     GameObject claw;
 
-    public bool is_controll = false;//是否正在被操控
+    public bool isControlled = false;//是否正在被操控
 
 
     // Start is called before the first frame update
@@ -20,7 +20,7 @@ public class Cross_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (is_controll)
+        if (isControlled)
         {
             if (Input.GetMouseButtonUp(0))
             {
@@ -39,8 +39,6 @@ public class Cross_Controller : MonoBehaviour
                 }
 
             }
-
-
         }
     }
 

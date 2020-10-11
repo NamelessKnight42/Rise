@@ -242,13 +242,13 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
-  m_LightVolumeOpacity: 0
+  m_Intensity: 0.5
+  m_LightVolumeOpacity: 0.7
   m_ApplyToSortingLayers: f959fabf
-  m_LightCookieSprite: {fileID: 21300000, guid: 486c86719d472a343bb849711697d4d2, type: 3}
+  m_LightCookieSprite: {fileID: 21300000, guid: a2de73c7a9ec0e24cab374876c2d260f, type: 3}
   m_UseNormalMap: 0
   m_LightOrder: 0
-  m_AlphaBlendOnOverlap: 1
+  m_AlphaBlendOnOverlap: 0
   m_ShadowIntensity: 0
   m_ShadowVolumeIntensity: 0
   m_PointLightInnerAngle: 360
@@ -361,11 +361,11 @@ GameObject:
   - component: {fileID: 367000532}
   - component: {fileID: 367000535}
   - component: {fileID: 367000534}
-  - component: {fileID: 367000536}
   - component: {fileID: 367000537}
+  - component: {fileID: 367000536}
   m_Layer: 8
   m_Name: AngleBg
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -498,8 +498,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bed0ef8be83fdbc49a7c87433b48e8fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  is_controll: 0
+  isControlled: 1
+  stopTimeLen: 10
+  force: 300
+  cdTimeLen: 1
 --- !u!50 &367000537
 Rigidbody2D:
   serializedVersion: 4
@@ -515,7 +517,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 0.5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -682,8 +684,8 @@ GameObject:
   - component: {fileID: 721573007}
   - component: {fileID: 721573006}
   - component: {fileID: 721573008}
-  - component: {fileID: 721573009}
   - component: {fileID: 721573010}
+  - component: {fileID: 721573009}
   m_Layer: 8
   m_Name: CrossBg
   m_TagString: Player
@@ -808,7 +810,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clawPrefab: {fileID: 7440407566242495869, guid: 7a36602b058116d41a0876bb9fe73871, type: 3}
   bulletVelocity: 5
-  is_controll: 0
+  isControlled: 0
 --- !u!50 &721573010
 Rigidbody2D:
   serializedVersion: 4
@@ -818,7 +820,7 @@ Rigidbody2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 721573005}
   m_BodyType: 0
-  m_Simulated: 0
+  m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
@@ -945,11 +947,11 @@ MonoBehaviour:
   m_LightType: 2
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 0.9339623, g: 0.12687784, b: 0.7903944, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.825243, a: 1}
   m_Intensity: 15
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: f959fabf
-  m_LightCookieSprite: {fileID: 21300000, guid: 0a45896a55fd87847a0872ff39ae7143, type: 3}
+  m_LightCookieSprite: {fileID: 21300000, guid: 7bc936c3846d1ce4b8ae8358ce90fa75, type: 3}
   m_UseNormalMap: 0
   m_LightOrder: 0
   m_AlphaBlendOnOverlap: 1
@@ -1157,6 +1159,7 @@ GameObject:
   - component: {fileID: 1503473769}
   - component: {fileID: 1503473770}
   - component: {fileID: 1503473771}
+  - component: {fileID: 1503473772}
   m_Layer: 8
   m_Name: CubeBg
   m_TagString: Untagged
@@ -1204,7 +1207,7 @@ SpriteRenderer:
   m_SortingLayerID: -1074112007
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0a45896a55fd87847a0872ff39ae7143, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3ec991ff4da1c4844a59fdc0ce168c11, type: 3}
   m_Color: {r: 0.31764707, g: 0.31764707, b: 0.31764707, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1247,7 +1250,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.96, y: 0.96}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 0.96, y: 0.96}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1293,10 +1296,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stopTimeLen: 10
-  cdTimeLen: 0
-  speed: 20
-  clawPrefab: {fileID: 763125961174152639, guid: 2e846968422871e4484917f680a41b1a, type: 3}
-  is_controll: 1
+  cdTimeLen: 2
+  speed: 30
+  clawPrefab: {fileID: 2380900594071549841, guid: 838bb64f82d171c4c84ee6e121cbd5ce, type: 3}
+  isControlled: 0
+--- !u!95 &1503473772
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503473766}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 74c55fec960f03445875aa8da566043c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1665668962
 GameObject:
   m_ObjectHideFlags: 3
@@ -1688,7 +1710,7 @@ GameObject:
   - component: {fileID: 1929888015}
   m_Layer: 8
   m_Name: CircleBg
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1798,7 +1820,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1929888010}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -1827,7 +1849,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1991925405
 MonoBehaviour:
   m_ObjectHideFlags: 0

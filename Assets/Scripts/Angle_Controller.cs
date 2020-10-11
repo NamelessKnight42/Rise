@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class Angle_Controller : MonoBehaviour
 {
-    public int speed;
-    public bool is_controll = true;//是否正在被操控
-    private bool is_keeping = false;//是否在蓄力
-    private Vector2 jump_dir;//三角跳的方向
-    private float keep_time = 0;//三角蓄力的时间
+    //public int speed;
+    public bool isControlled = true;//是否正在被操控
+    public float stopTimeLen;
+    public float force;
+    public float cdTimeLen;
+    float refreshCD = 0;
+
+    //private bool is_keeping = false;//是否在蓄力
+    //private Vector2 jump_dir;//三角跳的方向
+    //private float keep_time = 0;//三角蓄力的时间
     // Start is called before the first frame update
     void Start()
     {
@@ -18,27 +23,63 @@ public class Angle_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (is_controll)
+        if (isControlled)
         {
-            
-            if(Input.GetKeyDown(KeyCode.Space)&&!is_keeping)
+            if (Input.GetKeyDown(KeyCode.Space) && refreshCD<=0)
             {
-                is_keeping = true;
+                TimeStop();
             }
-            if (Input.GetKeyUp(KeyCode.Space) && is_keeping)
+            else
             {
-                is_keeping = false;
-                GetComponent<Rigidbody2D>().AddForce(jump_dir*keep_time*speed, ForceMode2D.Impulse);
-                keep_time = 0;
+                if(refreshCD > 0)
+                    refreshCD -= Time.deltaTime;
             }
-            if(is_keeping)
+            transform.up = GetComponent<Rigidbody2D>().velocity.normalized;
+        }
+    }
+
+    public void TimeStop()
+    {
+        Time.timeScale = 0;
+        StartCoroutine(Jump());
+        print("stop");
+    }
+
+    public void TimeRelease()
+    {
+        Time.timeScale = 1;
+        refreshCD = cdTimeLen;
+        print("release");
+    }
+
+    IEnumerator Jump()
+    {
+        float stopTime = Time.realtimeSinceStartup;
+        while (true)
+        {
+            Vector2 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - this.gameObject.transform.position;
+            //Vector2 pos = transform.position;
+            //transform.up = Vector2.Lerp(transform.up, dir, 0.05f);
+            //transform.rotation = Quaternion.Euler(0, 0, Vector2.Angle(transform.position, dir));
+            this.gameObject.transform.up = dir.normalized;
+            if (Input.GetKeyUp(KeyCode.Space))//如果正在时停则时停结束，进入cd
             {
-                jump_dir = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - this.gameObject.transform.position);
-                float angle = Mathf.Atan2(jump_dir.y, jump_dir.x) * Mathf.Rad2Deg;
-                transform.eulerAngles = new Vector3(0, 0, angle);
-                keep_time += Time.deltaTime;
+                TimeRelease();
+                yield break;
             }
-            //Debug.Log("aaa");
+            if (Input.GetMouseButtonDown(0))//如果按下鼠标并且正在时停
+            {
+                this.gameObject.GetComponent<Rigidbody2D>().velocity = dir.normalized;
+                this.gameObject.GetComponent<Rigidbody2D>().AddForce(force * dir.normalized); 
+                TimeRelease();
+                break;
+            }
+            if (Time.realtimeSinceStartup - stopTime > stopTimeLen)
+            {
+                TimeRelease();
+                yield break;
+            }
+            yield return 0;
         }
     }
 }

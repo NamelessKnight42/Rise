@@ -74,7 +74,7 @@ public class Cross_Claw : MonoBehaviour
             DrawLine(parent.transform.position);
             Vector2 dir = this.gameObject.transform.position - parent.transform.position;
         
-            if (dir.magnitude < 0.5 || timer > 10f)//距离过近或者超过一定时间都会销毁钩爪
+            if (dir.magnitude < 0.5 || timer > 2f)//距离过近或者超过一定时间都会销毁钩爪
             {
                 Destroy(this.gameObject); 
             }
