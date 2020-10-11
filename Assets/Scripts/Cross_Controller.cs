@@ -8,7 +8,7 @@ public class Cross_Controller : MonoBehaviour
     public float bulletVelocity;
     GameObject claw;
 
-    private bool is_controll = false;//是否正在被操控
+    public bool is_controll = false;//是否正在被操控
 
 
     // Start is called before the first frame update

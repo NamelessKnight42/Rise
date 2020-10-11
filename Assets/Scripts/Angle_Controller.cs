@@ -5,7 +5,7 @@ using UnityEngine;
 public class Angle_Controller : MonoBehaviour
 {
     public int speed;
-    private bool is_controll = true;//是否正在被操控
+    public bool is_controll = true;//是否正在被操控
     private bool is_keeping = false;//是否在蓄力
     private Vector2 jump_dir;//三角跳的方向
     private float keep_time = 0;//三角蓄力的时间

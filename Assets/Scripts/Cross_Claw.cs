@@ -79,7 +79,7 @@ public class Cross_Claw : MonoBehaviour
                 Destroy(this.gameObject); 
             }
             parent.GetComponent<Rigidbody2D>().AddForce(rate * dir.normalized);
-            something.GetComponent<Rigidbody2D>().AddForce(rate * dir.normalized);
+            something.GetComponent<Rigidbody2D>().AddForce(-rate * dir.normalized);
             
             transform.parent = something.transform;
             timer += Time.deltaTime;
