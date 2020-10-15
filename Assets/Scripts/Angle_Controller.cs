@@ -30,7 +30,7 @@ public class Angle_Controller : MonoBehaviour
 
         if (this.tag == "isControlled")
         {
-            Debug.Log("三角正在被操控");
+            //Debug.Log("三角正在被操控");
             #region 秽土转生判断
             if (Input.GetKey(KeyCode.C))//按c键秽土转生
             {

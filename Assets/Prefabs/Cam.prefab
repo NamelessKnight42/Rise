@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2953497008477346625}
   - component: {fileID: 2953497008477346626}
+  - component: {fileID: 8388735935803563162}
   m_Layer: 0
   m_Name: Cam
   m_TagString: Untagged
@@ -24,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2953497008477346624}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.00000059604645, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -67,6 +68,18 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 2953497009667192372}
+--- !u!114 &8388735935803563162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2953497008477346624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3948ca27a401194eaeb2484305be58f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2953497009667192371
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,19 +14,24 @@ public class Camera_Move : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        par = gameObject.transform.parent.gameObject;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(par.tag=="isControlled")
+        if(Message_Manager.instance.GetIsRelive())
         {
-            this.GetComponent<Cinemachine.CinemachineVirtualCamera>().Priority=5;
+            if(Input.GetMouseButtonDown(0))
+            {
+                int i = 1;
+                while (i < 100) i++;
+                par = Message_Manager.instance.GetReliveTo();
+
+            }
+            if(par!=null)
+                this.GetComponent<Cinemachine.CinemachineVirtualCamera>().Follow=par.transform;
         }
-        else
-        {
-            this.GetComponent<Cinemachine.CinemachineVirtualCamera>().Priority = 2;
-        }
+       
     }
 }
