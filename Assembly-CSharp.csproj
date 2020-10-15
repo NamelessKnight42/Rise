@@ -61,6 +61,7 @@
      <Compile Include="Assets\Scripts\Angle_Controller.cs" />
      <Compile Include="Assets\Scripts\Circle_Controller.cs" />
      <Compile Include="Assets\Scripts\Cross_Controller.cs" />
+     <Compile Include="Assets\Scripts\Camera_Controll\Camera_Move.cs" />
  <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
  <HintPath>D:/game/store/Rise/Library/ScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
  </Reference>

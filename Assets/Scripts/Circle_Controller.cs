@@ -8,7 +8,7 @@ public class Circle_Controller : MonoBehaviour
     public float cd_time_len;
     public float speed;
    
-    public bool isControlled = false;//是否正在被操控
+    //public bool isControlled = false;//是否正在被操控
     
     private bool is_stop = false;//是否正在时停
     
@@ -36,7 +36,7 @@ public class Circle_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isControlled)
+        if (this.tag == "isControlled")
         {
             #region 秽土转生判断
             if (Input.GetKey(KeyCode.C))//按c键秽土转生
@@ -110,7 +110,7 @@ public class Circle_Controller : MonoBehaviour
     IEnumerator Relive()//秽土转生函数
     {
         Debug.Log("进入了秽土转生");
-        isControlled = false;
+        this.tag = "abonded";
         float stopTime = Time.realtimeSinceStartup;
         GameObject reliveTo = null;
         Message_Manager.instance.setIsRelive(true);
@@ -152,9 +152,9 @@ public class Circle_Controller : MonoBehaviour
 
 
 
-    public void SetController(bool a)
+    public void SetController(string a)
     {
-        isControlled = a;
+        this.tag = a;
     }
 
     public void InitMessage()//初始化信息，防止传递错误
@@ -165,26 +165,27 @@ public class Circle_Controller : MonoBehaviour
 
     public void RushB(GameObject B)
     {
+        string a = "isControlled";
         string name = B.name;
         Debug.Log(name);
         switch (name)
         {
             case "Cube":
                 Cube_Controller cube = B.GetComponent<Cube_Controller>();
-                cube.SetController(true);
+                cube.SetController(a);
                 break;
             case "Angle":
                 Angle_Controller angle = B.GetComponent<Angle_Controller>();
-                angle.SetController(true);
+                angle.SetController(a);
                 break;
             case "Circle":
                 Circle_Controller circle = B.GetComponent<Circle_Controller>();
-                circle.SetController(true);
+                circle.SetController(a);
                 Debug.Log("进入圆辣");
                 break;
             case "Cross":
                 Cross_Controller cross = B.GetComponent<Cross_Controller>();
-                cross.SetController(true);
+                cross.SetController(a);
                 break;
             default: break;
 

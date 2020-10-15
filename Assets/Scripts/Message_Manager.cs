@@ -5,6 +5,9 @@ using UnityEngine;
 public class Message_Manager : MonoBehaviour
 {
     // Start is called before the first frame update
+    /*
+     * *用于控制点击获取物体实例的消息传递
+     */
     
     public static Message_Manager instance { get; private set; }
 

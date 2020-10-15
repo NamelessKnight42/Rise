@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 
 public class Cross_Claw : MonoBehaviour
 {
-    public bool is_controll = false;
-    float timer;bool isCatch;
+    float timer;
+    bool isCatch;
     public GameObject parent;
     private GameObject something;
     public float rate;
@@ -17,8 +18,9 @@ public class Cross_Claw : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        if (timer >= 1f)
+    { 
+
+        if (timer >= 2f)
         {
             Destroy(this.gameObject);
         }
@@ -32,8 +34,9 @@ public class Cross_Claw : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag != "Player")
+        if (collision.tag != "isControlled")
         {
+            
             GetComponent<Rigidbody2D>().simulated = false;
             something = collision.gameObject;
             isCatch =true;
@@ -77,6 +80,7 @@ public class Cross_Claw : MonoBehaviour
         
             if (dir.magnitude < 0.5 || timer > 2f)//距离过近或者超过一定时间都会销毁钩爪
             {
+                
                 Destroy(this.gameObject); 
             }
             parent.GetComponent<Rigidbody2D>().AddForce(rate * dir.normalized);

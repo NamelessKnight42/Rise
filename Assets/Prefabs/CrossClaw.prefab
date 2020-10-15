@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9004531837971425395}
   - component: {fileID: 5151236332453794686}
   - component: {fileID: 4224948149413143695}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrossClaw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,7 +256,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7440407567248622474}
   - component: {fileID: 7440407567248622473}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
