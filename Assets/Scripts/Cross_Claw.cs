@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Cross_Claw : MonoBehaviour
 {
+    public bool is_controll = false;
     float timer;bool isCatch;
     public GameObject parent;
     private GameObject something;
