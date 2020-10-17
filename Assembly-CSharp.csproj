@@ -56,13 +56,17 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Cube_Controller.cs" />
-     <Compile Include="Assets\Scripts\Camera_Controll\Camera_Move.cs" />
+     <Compile Include="Assets\Scripts\first_game\Creat_Body.cs" />
+     <Compile Include="Assets\Scripts\first_game\start.cs" />
+     <Compile Include="Assets\Scripts\Camera_Controll\Cam_Follow.cs" />
      <Compile Include="Assets\Scripts\Cross_Claw.cs" />
      <Compile Include="Assets\Scripts\Message_Manager.cs" />
+     <Compile Include="Assets\Scripts\first_game\Stone.cs" />
      <Compile Include="Assets\Scripts\Angle_Controller.cs" />
+     <Compile Include="Assets\Scripts\first_game\Music.cs" />
      <Compile Include="Assets\Scripts\Circle_Controller.cs" />
+     <Compile Include="Assets\Scripts\first_game\Init_Wall.cs" />
      <Compile Include="Assets\Scripts\Cross_Controller.cs" />
-     <Compile Include="Assets\Scripts\Camera_Controll\Cam_Follow.cs" />
  <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
  <HintPath>D:/game/store/Rise/Library/ScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
  </Reference>

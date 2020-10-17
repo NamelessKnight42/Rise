@@ -298,7 +298,7 @@ Rigidbody2D:
   m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 0.2
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -316,8 +316,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e68c3761d0da9f24ab7d8598f7760102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stopTimeLen: 50
-  cdTimeLen: 2
+  stopTimeLen: 10
+  cdTimeLen: 1
   speed: 30
   clawPrefab: {fileID: 2380900594071549841, guid: 838bb64f82d171c4c84ee6e121cbd5ce, type: 3}
   reliveTimeLen: 10

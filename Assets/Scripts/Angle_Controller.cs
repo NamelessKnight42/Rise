@@ -15,7 +15,7 @@ public class Angle_Controller : MonoBehaviour
 
     public float reliveTimeLen;
     private float reliveTime = 0;//重生时间判断
-
+    private float scale = 0.2f;//时间流速
 
     // Start is called before the first frame update
     void Start()
@@ -27,12 +27,14 @@ public class Angle_Controller : MonoBehaviour
     void Update()
     {
         //Debug.Log(this.tag);
+        if (this.transform.position.y < 0)
+            Destroy(gameObject);
 
         if (this.tag == "isControlled")
         {
             //Debug.Log("三角正在被操控");
             #region 秽土转生判断
-            if (Input.GetKey(KeyCode.C))//按c键秽土转生
+            if (Input.GetKeyDown(KeyCode.C))//按c键秽土转生
             {
                 StartRelive();
             }
@@ -55,16 +57,16 @@ public class Angle_Controller : MonoBehaviour
 
     public void TimeStop()
     {
-        Time.timeScale = 0;
+        Time.timeScale = scale;
         StartCoroutine(Jump());
-        print("stop");
+        //print("stop");
     }
 
     public void TimeRelease()
     {
         Time.timeScale = 1;
         refreshCD = cdTimeLen;
-        print("release");
+        //print("release");
     }
 
     IEnumerator Jump()
@@ -120,14 +122,14 @@ public class Angle_Controller : MonoBehaviour
             if (Input.GetMouseButtonDown(0))//点击了某处的残骸
             {
                 float time = 0;
-                Debug.Log("点进来了");
+                //Debug.Log("点进来了");
                 while (time <= 30) time += 1;
                 
                 if (Message_Manager.instance.GetHaveReliveTo())
                 {
                     reliveTo = Message_Manager.instance.GetReliveTo();
                     //进入动画函数并完成转移，暂定为RushB()
-                    Debug.Log("进入RushB辣");
+                    //Debug.Log("进入RushB辣");
                     InitMessage();
                     Time.timeScale = 1;
                     RushB(reliveTo);
@@ -140,7 +142,7 @@ public class Angle_Controller : MonoBehaviour
             {
                 Time.timeScale = 1;
                 //Message_Manager.instance.setIsRelive(false);
-                Debug.Log("重生超时");
+               // Debug.Log("重生超时");
                 yield break;
             }
             yield return 0;
@@ -165,23 +167,23 @@ public class Angle_Controller : MonoBehaviour
     {
         string a = "isControlled";
         string name = B.name;
-        Debug.Log(name);
+        //Debug.Log(name);
         switch (name)
         {
-            case "Cube":
+            case "Cube(Clone)":
                 Cube_Controller cube = B.GetComponent<Cube_Controller>();
                 cube.SetController(a);
                 break;
-            case "Angle":
+            case "Angle(Clone)":
                 Angle_Controller angle = B.GetComponent<Angle_Controller>();
                 angle.SetController(a);
                 break;
-            case "Circle":
+            case "Circle(Clone)":
                 Circle_Controller circle = B.GetComponent<Circle_Controller>();
                 circle.SetController(a);
-                Debug.Log("进入圆辣");
+                //Debug.Log("进入圆辣");
                 break;
-            case "Cross":
+            case "Cross(Clone)":
                 Cross_Controller cross = B.GetComponent<Cross_Controller>();
                 cross.SetController(a);
                 break;
@@ -195,13 +197,11 @@ public class Angle_Controller : MonoBehaviour
     {
         if (Message_Manager.instance.GetIsRelive())
         {
-            Debug.Log("succeed to access");
+            //Debug.Log("succeed to access");
             Message_Manager.instance.SetHaveReliveTo(true);
             Message_Manager.instance.SetReliveTo(gameObject);
         }
-        else
-            Debug.Log("fail to access");
-        //Debug.Log(gameObject.name);
+
     }
     #endregion
 }

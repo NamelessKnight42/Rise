@@ -30,6 +30,8 @@ public class Cube_Controller : MonoBehaviour
 
     private Vector3 originPos;
 
+    private float scale = 0.2f;//时间流速
+
     // Start is called before the first frame update
 
     void Start()
@@ -41,12 +43,14 @@ public class Cube_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (this.transform.position.y < 0)
+            Destroy(gameObject);
+
         if (this.tag== "isControlled")
         {
 
             #region 秽土转生判断
-            if (Input.GetKey(KeyCode.C))//按c键秽土转生
+            if (Input.GetKeyDown(KeyCode.C))//按c键秽土转生
             {
                 StartRelive();
             }
@@ -87,11 +91,11 @@ public class Cube_Controller : MonoBehaviour
 
     public void TimeStop()
     {
-        Time.timeScale = 0;
+        Time.timeScale = scale;
         isStop = true;
        
         StartCoroutine(Flash());
-        print("stop");
+        //print("stop");
     }
 
     public void TimeRelease()
@@ -99,7 +103,7 @@ public class Cube_Controller : MonoBehaviour
         Time.timeScale = 1;
         refreshCD = cdTimeLen;
         isStop = false;
-        print("release");
+        //print("release");
     }
 
     IEnumerator Flash()
@@ -117,7 +121,7 @@ public class Cube_Controller : MonoBehaviour
             {
                 Vector2 pi = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 claw = Instantiate(clawPrefab, pi, Quaternion.identity);
-                Debug.Log("协程里的案件");
+               // Debug.Log("协程里的案件");
                 Vector2 dir = claw.transform.position - this.gameObject.transform.position;
                 GetComponent<Rigidbody2D>().velocity= speed * dir.normalized;
                 moveLen = dir.magnitude;
@@ -144,7 +148,7 @@ public class Cube_Controller : MonoBehaviour
 
     IEnumerator Relive()//秽土转生函数
     {
-        Debug.Log("进入了秽土转生");
+        //Debug.Log("进入了秽土转生");
         this.tag = "abonded";
         float stopTime = Time.realtimeSinceStartup;
         GameObject reliveTo = null;
@@ -177,7 +181,7 @@ public class Cube_Controller : MonoBehaviour
             {
                 Time.timeScale = 1;
                 //Message_Manager.instance.setIsRelive(false);
-                Debug.Log("重生超时");
+                //Debug.Log("重生超时");
                 yield break;
             }
             yield return 0;
@@ -202,27 +206,27 @@ public class Cube_Controller : MonoBehaviour
     {
         string a = "isControlled";
         string name = B.name;
-        Debug.Log(name);
+        //Debug.Log(name);
         switch (name)
         {
-            case "Cube":
+            case "Cube(Clone)":
                 Cube_Controller cube = B.GetComponent<Cube_Controller>();
                 cube.SetController(a);
                 break;
-            case "Angle":
+            case "Angle(Clone)":
                 Angle_Controller angle = B.GetComponent<Angle_Controller>();
                 angle.SetController(a);
                 break;
-            case "Circle":
+            case "Circle(Clone)":
                 Circle_Controller circle = B.GetComponent<Circle_Controller>();
                 circle.SetController(a);
-                Debug.Log("进入圆辣");
+                //Debug.Log("进入圆辣");
                 break;
-            case "Cross":
+            case "Cross(Clone)":
                 Cross_Controller cross = B.GetComponent<Cross_Controller>();
                 cross.SetController(a);
                 break;
-            default:break;
+            default: break;
         }
 
     }
@@ -234,9 +238,7 @@ public class Cube_Controller : MonoBehaviour
             Message_Manager.instance.SetHaveReliveTo(true);
             Message_Manager.instance.SetReliveTo(gameObject);
         }
-        else
-            Debug.Log("fail to access");
-        //Debug.Log(gameObject.name);
+
     }
     #endregion
 

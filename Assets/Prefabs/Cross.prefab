@@ -138,7 +138,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 0.2
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clawPrefab: {fileID: 7440407566242495869, guid: 7a36602b058116d41a0876bb9fe73871, type: 3}
-  bulletVelocity: 5
+  bulletVelocity: 10
   reliveTimeLen: 10
 --- !u!1 &271859439992460287
 GameObject:
